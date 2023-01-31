@@ -1,4 +1,37 @@
+import { useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
+
 export default function Header() {
+
+    var token = localStorage.getItem("token");
+    const navigate = useNavigate();
+
+    function deconnect(e) {
+        e.preventDefault();
+
+        fetch('http://localhost:8080/utilisateur/'+token,{
+            method : 'GET',
+            headers : {'Content-Type' : 'application/json'},
+        })
+        .then(response => response.json())
+        .then(data => {
+                console.log(data);
+                localStorage.removeItem("token");
+                navigate("/login");
+            }
+        );
+
+    }
+
+    // useEffect(() => {
+    //     if(token != null) {
+    //         document.getElementById("deconnexion").style.display = block;
+    //     } else{
+    //         document.getElementById("deconnexion").style.display = none;
+    //     }
+        
+    // }, [])
+
   return (
     <header className="header-area header-style-1 header-height-2">
         <div class="header-top header-top-ptb-1 d-none d-lg-block">
@@ -50,17 +83,17 @@ export default function Header() {
                             <div className="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading">
                                 <nav>
                                     <ul>
-                                        <li className="mr-90"></li>
-                                        <li className="mr-90">
+                                        <li className="mr-60"></li>
+                                        <li className="mr-60">
                                             <a href="index.html"><img style={{objectFit:"cover", objectPosition:"center", height:"25px", width:"25px" }} class="svgInject" alt="" src="assets/imgs/theme/icons/home-page.png" /> Accueil</a>
                                         </li>
-                                        <li className="mr-90">
+                                        <li className="mr-60">
                                             <a href="index.html"><img style={{objectFit:"cover", objectPosition:"center", height:"25px", width:"25px" }} class="svgInject" alt="" src="assets/imgs/theme/icons/about-us.png" /> A propos</a>
                                         </li>
-                                        <li className="mr-90">
+                                        <li className="mr-60">
                                             <a href="index.html"><img style={{objectFit:"cover", objectPosition:"center", height:"25px", width:"25px" }} class="svgInject" alt="" src="assets/imgs/theme/icons/mes-encheres.png" /> Mes enchères</a>
                                         </li>
-                                        <li className="mr-90">
+                                        <li className="mr-60">
                                             <a><img style={{objectFit:"cover", objectPosition:"center", height:"25px", width:"25px" }} class="svgInject" alt="" src="assets/imgs/theme/icons/enchere.png" /> Enchères <i className="fi-rs-angle-down"></i></a>
                                             <ul className="sub-menu">
                                                 <li><a>En cours</a></li>
@@ -68,7 +101,7 @@ export default function Header() {
                                                 <li><a>Terminées </a></li>
                                             </ul>
                                         </li>
-                                        <li className="mr-90">
+                                        <li className="mr-60">
                                             <a><img style={{objectFit:"cover", objectPosition:"center", height:"25px", width:"25px" }} class="svgInject" alt="" src="assets/imgs/theme/icons/icon-user.svg" /> Compte <i className="fi-rs-angle-down"></i></a>
                                             <ul className="sub-menu">
                                                 <li>
@@ -77,8 +110,8 @@ export default function Header() {
                                                 <li>
                                                     <a href="page-account.html"><i className="fi fi-rs-settings-sliders mr-10"></i>Paramètres</a>
                                                 </li>
-                                                <li>
-                                                    <a href="page-login.html"><i className="fi fi-rs-sign-out mr-10"></i>Se déconnecter</a>
+                                                <li id="deconnexion">
+                                                    <Link to="/head" onClick={deconnect}><i className="fi fi-rs-sign-out mr-10"></i>Se déconnecter</Link>
                                                 </li>
                                             </ul>
                                         </li>
