@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const EnchereList = ({encheres}) => {
     
     
@@ -16,14 +18,16 @@ const EnchereList = ({encheres}) => {
                                     </a>
                                 </div>
                                 <div className="product-action-1">
-                                    <a aria-label="Voir détail" className="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i className="fi-rs-eye"></i></a>
+                                    
+                                <Link to={"/detail"} state={{ idEnchere : enchere.idEnchere}} ><i className="fi-rs-eye"></i></Link>
+                                   {/* <a aria-label="Voir détail" className="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i className="fi-rs-eye"></i></a> */}
                                 </div>
                             </div>
                             <div className="product-content-wrap">
                                 <div className="product-category">
                                     <a href="shop-grid-right.html">{enchere.categorie}</a>
                                 </div>
-                                <h2><a href="shop-product-right.html">{enchere.nom}</a></h2>
+                                <h2><Link to={"/detail"} state={{ idEnchere : enchere.idEnchere}} >{enchere.nom}</Link></h2>
                                 <div className="product-rate-cover">
                                     <span className="font-small ml-5 text-muted">Date: {enchere.dateEnchere} </span>
                                 </div>
