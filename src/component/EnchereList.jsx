@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
+import Status from "./Status";
 
 const EnchereList = ({encheres}) => {
-    
-    
-    console.log("Eto "+JSON.stringify(encheres));
     return(
         <>
             {encheres.map((enchere) => {
@@ -18,25 +16,26 @@ const EnchereList = ({encheres}) => {
                                     </a>
                                 </div>
                                 <div className="product-action-1">
-                                    
-                                <Link to={"/detail"} state={{ idEnchere : enchere.idEnchere}} ><i className="fi-rs-eye"></i></Link>
-                                   {/* <a aria-label="Voir détail" className="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i className="fi-rs-eye"></i></a> */}
+                                    <Link to={"/detailEnchere"} state={{ idEnchere : enchere.idEnchere}} aria-label="Voir détail"><i className="fi-rs-eye"></i></Link>
+                                </div>
+                                <div className="product-badges product-badges-position product-badges-mrg">
+                                    <Status status={enchere.statusEnchere}></Status>
                                 </div>
                             </div>
                             <div className="product-content-wrap">
                                 <div className="product-category">
                                     <a href="shop-grid-right.html">{enchere.categorie}</a>
                                 </div>
-                                <h2><Link to={"/detail"} state={{ idEnchere : enchere.idEnchere}} >{enchere.nom}</Link></h2>
-                                <div className="product-rate-cover">
-                                    <span className="font-small ml-5 text-muted">Date: {enchere.dateEnchere} </span>
+                                <h2><Link to={"/detailEnchere"} state={{ idEnchere : enchere.idEnchere}}>{enchere.nom}</Link></h2>
+                                <div>
+                                    <span className="font-small text-muted">Par <a style={{color:"#0baf9a"}}>{enchere.nomVendeur} {enchere.prenomVendeur}</a></span>
                                 </div>
                                 <div>
-                                    <span className="font-small text-muted">By <a>{enchere.nomVendeur} {enchere.prenomVendeur}</a></span>
+                                    <span className="font-small text-muted"><a style={{color:"#253D4E"}}>{ (enchere.dateEnchere).replace("T", " à ") }</a></span>
                                 </div>
                                 <div className="product-card-bottom">
                                     <div className="product-price">
-                                        <span>{enchere.prixEnchere} Ar</span>
+                                        <span className="font-small ml-5" style={{color:"#0baf9a"}}>{enchere.prixEnchere} Ar</span>
                                     </div>
                                 </div>
                             </div>

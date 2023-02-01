@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LeftSideBar = () => {
 
     const [categories, setCategorie] = useState([]);
+
+    const [status, setStatus] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(()=>{
         fetch('http://localhost:8080/categorie/liste',{
@@ -15,16 +20,40 @@ const LeftSideBar = () => {
                 var error = data.error;
                 if( error == null ){
                     setCategorie(data["data"]);
+                    setStatus(data["status"]);
                 }
             }
         );
     }, []);
+
+    const [prixMin, setPrixMin] = useState('');
+    const [prixMax, setPrixMax] = useState('');
+    const [dateDebut, setDateDebut] = useState('');
+    const [dateFin, setDateFin] = useState('');
+    const [idCategorie, setIdCategorie] = useState('');
+    const [idStatus, setIdStatus] = useState('');
+    const [nom, setNom] = useState('');
+
+    function rechercher() {
+
+        var condition = {
+            "nom" : nom,
+            "prixMin" : prixMin,
+            "prixMax" : prixMax,
+            "dateMin" : dateDebut,
+            "dateMax" : dateFin,
+            "idCategorie" : idCategorie,
+            "status" : idStatus
+        };
+        localStorage.setItem("conditions",JSON.stringify(condition));
+        navigate("/recherche");
+    }
     
     return(
         <>
             <div className="col-lg-1-5 primary-sidebar sticky-sidebar pt-30">
-                <div class="sidebar-widget widget-category-2 mb-30">
-                    <h5 class="section-title style-1 mb-30">Category</h5>
+                <div className="sidebar-widget widget-category-2 mb-30">
+                    <h5 className="section-title style-1 mb-30">Catégories</h5>
                     <ul>
                         {categories.map((categorie) => ( 
                                 
@@ -41,36 +70,44 @@ const LeftSideBar = () => {
 
                     <div className="list-group">
                         <div className="list-group-item mb-10 mt-10">
+                            <label className="fw-900 mr-10" for="exampleCheckbox31">Nom</label>
+                            <input type="text" name="nom" style={{width:"170px", height:"40px"}} value={nom} onChange={(event) => setNom(event.target.value)}/>
+                        </div>
+                    </div>
+
+                    <div className="list-group">
+                        <div className="list-group-item mb-10 mt-10">
                             <label className="fw-900 mr-10" for="exampleCheckbox31">Prix Min</label>
-                            <input type="number" name="prixMin" style={{width:"130px", height:"40px"}}/>
+                            <input type="number" name="prixMin" style={{width:"145px", height:"40px"}} value={prixMin} onChange={(event) => setPrixMin(event.target.value)}/>
                         </div>
                     </div>
                     
                     <div className="list-group">
                         <div className="list-group-item mb-10 mt-10">
                             <label className="fw-900 mr-10" for="exampleCheckbox31">Prix Max</label>
-                            <input type="number" name="prixMin" style={{width:"130px", height:"40px"}}/>
+                            <input type="number" name="prixMax" style={{width:"145px", height:"40px"}} value={prixMax} onChange={(event) => setPrixMax(event.target.value)}/>
                         </div>
                     </div>
 
                     <div className="list-group">
                         <div className="list-group-item mb-10 mt-10">
                             <label className="fw-900 mr-10" for="exampleCheckbox31">Date Min</label>
-                            <input type="datetime-local" step="1" name="dateMin" style={{height:"40px"}}/>
+                            <input type="datetime-local" step="1" name="dateMin" style={{width:"215px", height:"40px"}} value={dateDebut} onChange={(event) => setDateDebut(event.target.value)}/>
                         </div>
                     </div>
 
                     <div className="list-group">
                         <div className="list-group-item mb-10 mt-10">
                             <label className="fw-900 mr-10" for="exampleCheckbox31">Date Max</label>
-                            <input type="datetime-local" step="1" name="dateMax" style={{height:"40px"}}/>
+                            <input type="datetime-local" step="1" name="dateMax" style={{width:"215px", height:"40px"}} value={dateFin} onChange={(event) => setDateFin(event.target.value)}/>
                         </div>
                     </div>
                     
                     <div className="list-group">
                         <div className="list-group-item mb-10 mt-10">
                             <label className="fw-900 mr-10" for="exampleCheckbox31">Catégories</label>
-                            <select name="" id="" className="select-active">
+                            <select name="idCategorie" className="select-active" onChange={(event) => setIdCategorie(event.target.value)}>
+                                <option value={idCategorie}>Choisir...</option>
                                 {categories.map((c) => ( 
                                     <option value={c.idCategorie}>{c.valeur}</option>
                                 ))}
@@ -83,15 +120,18 @@ const LeftSideBar = () => {
                     <div className="list-group">
                         <div className="list-group-item mb-10 mt-10">
                             <label className="fw-900 mr-10" for="exampleCheckbox31">Status</label>
-                            <select name="" id="" className="select-active">
-                                <option value="">Test</option>
+                            <select name="status" className="select-active" onChange={(event) => setIdStatus(event.target.value)}>
+                                <option value={idStatus}>Choisir...</option>
+                                {status.map((s) => ( 
+                                    <option value={s.idStatus}>{s.valeur}</option>
+                                ))}
                             </select>
                         </div>
                     </div>
 
                     <br />
 
-                    <a href="shop-grid-right.html" className="btn btn-sm btn-default">Rechercher</a>
+                    <a className="btn btn-sm btn-default" onClick={rechercher}>Rechercher</a>
                 </div>
 
                 {/* <div className="sidebar-widget product-sidebar mb-30 p-30 bg-grey border-radius-10">

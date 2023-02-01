@@ -6,8 +6,8 @@ import Header from "../component/Header";
 
 export default function Login(){
 
-    const [email, setEmail] = useState();
-    const [mdp, setMdp] = useState();
+    const [email, setEmail] = useState("Rakoto@gmail.com");
+    const [mdp, setMdp] = useState("123LAZA");
     const [error, setError] = useState(null);
 
     const navigate = useNavigate();
@@ -54,17 +54,17 @@ export default function Login(){
                                             <div className="padding_eight_all bg-white">
                                                 <div className="heading_s1">
                                                     <h1 className="mb-5">Login</h1>
-                                                    <p className="mb-30">Don't have an account? <a href="page-register.html">Create here</a></p>
+                                                    <p className="mb-30">Vous n'avez pas de compte? <a href="page-register.html">Inscrivez-vous</a></p>
                                                 </div>
                                                 <form onSubmit={authentificate}>
                                                     <div className="form-group">
-                                                        <input type="text" required="" name="email" placeholder="Username or Email *" onChange={(e) => (setEmail(e.target.value))} />
+                                                        <input type="text" required="" name="email" value={email} onChange={(e) => (setEmail(e.target.value))} />
                                                     </div>
                                                     <div className="form-group">
-                                                        <input required="" type="password" name="password" placeholder="Your password *" onChange={(e) => setMdp(e.target.value)} />
+                                                        <input required="" type="password" name="password" value={mdp} onChange={(e) => setMdp(e.target.value)} />
                                                     </div>
                                                     <div className="form-group">
-                                                        <button type="submit" className="btn btn-heading btn-block hover-up">Log in</button>
+                                                        <button type="submit" className="btn btn-heading btn-block hover-up">Se connecter</button>
                                                     </div>
                                                     <p style={{color: "red"}}>{error}</p>
                                                 </form>

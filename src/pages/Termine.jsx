@@ -6,12 +6,12 @@ import EnchereList from "../component/EnchereList";
 import Header from "../component/Header";
 import Footer from "../component/Footer";
 
-const Accueil = () => {
+const Termine = () => {
 
     const [encheres, setEncheres] = useState([]);
 
     useEffect(()=>{
-        fetch('http://localhost:8080/v_enchere/listeEncheres',{
+        fetch('http://localhost:8080/v_enchere/listeEncheresTermine',{
             method : 'GET',
             headers : {'Content-Type' : 'application/json'},
         })
@@ -35,7 +35,7 @@ const Accueil = () => {
                         
                         <section className="product-tabs section-padding position-relative">
                             <div className="section-title style-2">
-                                <h3>Liste des enchères</h3>
+                                <h3>Liste des enchères terminées</h3>
                                 <ListCategorie></ListCategorie>
                             </div>
                             <div className="tab-content" id="myTabContent">
@@ -56,4 +56,4 @@ const Accueil = () => {
         </>
     )
 };
-export default Accueil;
+export default Termine;

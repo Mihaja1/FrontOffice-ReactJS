@@ -34,34 +34,34 @@ export default function Header() {
 
   return (
     <header className="header-area header-style-1 header-height-2">
-        <div class="header-top header-top-ptb-1 d-none d-lg-block">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-xl-3 col-lg-4">
-                        <div class="header-info">
+        <div className="header-top header-top-ptb-1 d-none d-lg-block">
+            <div className="container">
+                <div className="row align-items-center">
+                    <div className="col-xl-3 col-lg-4">
+                        <div className="header-info">
                             <ul>
                                 <li><a>mg-enchere@gmail.com</a></li>
                                 <li><a>+261 34 15 152 62</a></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-4">
-                        <div class="text-center">
-                            <div id="news-flash" class="d-inline-block">
+                    <div className="col-xl-6 col-lg-4">
+                        <div className="text-center">
+                            <div id="news-flash" className="d-inline-block">
                                 <ul>
                                     <li>Votre site de vente aux enchères en ligne</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-4">
-                        <div class="header-info header-info-right">
+                    <div className="col-xl-3 col-lg-4">
+                        <div className="header-info header-info-right">
                             <ul>
                                 <li>
-                                    <a class="language-dropdown-active">MADAGASCAR</a>
+                                    <a className="language-dropdown-active">MADAGASCAR</a>
                                 </li>
                                 <li>
-                                    <a class="language-dropdown-active" href="#">ARIARY</a>
+                                    <a className="language-dropdown-active" href="#">ARIARY</a>
                                 </li>
                             </ul>
                         </div>
@@ -69,11 +69,11 @@ export default function Header() {
                 </div>
             </div>
         </div>
-        <div class="header-bottom header-bottom-bg-color sticky-bar">
+        <div className="header-bottom header-bottom-bg-color sticky-bar">
             <br />
-            <div class="container">
-                <div class="header-wrap header-space-between position-relative">
-                    <div class="header-nav d-none d-lg-flex">
+            <div className="container">
+                <div className="header-wrap header-space-between position-relative">
+                    <div className="header-nav d-none d-lg-flex">
                         <div className="header-nav d-none d-lg-flex">
                             <div>
                                 <a href="#">
@@ -85,27 +85,27 @@ export default function Header() {
                                     <ul>
                                         <li className="mr-60"></li>
                                         <li className="mr-60">
-                                            <a href="index.html"><img style={{objectFit:"cover", objectPosition:"center", height:"25px", width:"25px" }} class="svgInject" alt="" src="assets/imgs/theme/icons/home-page.png" /> Accueil</a>
+                                            <Link to="/"><img style={{objectFit:"cover", objectPosition:"center", height:"25px", width:"25px" }} className="svgInject" alt="" src="assets/imgs/theme/icons/home-page.png" /> Accueil</Link>
                                         </li>
                                         <li className="mr-60">
-                                            <a href="index.html"><img style={{objectFit:"cover", objectPosition:"center", height:"25px", width:"25px" }} class="svgInject" alt="" src="assets/imgs/theme/icons/about-us.png" /> A propos</a>
+                                            <a href="index.html"><img style={{objectFit:"cover", objectPosition:"center", height:"25px", width:"25px" }} className="svgInject" alt="" src="assets/imgs/theme/icons/about-us.png" /> A propos</a>
                                         </li>
                                         <li className="mr-60">
-                                            <a href="index.html"><img style={{objectFit:"cover", objectPosition:"center", height:"25px", width:"25px" }} class="svgInject" alt="" src="assets/imgs/theme/icons/mes-encheres.png" /> Mes enchères</a>
+                                            <Link to="/liste"><img style={{objectFit:"cover", objectPosition:"center", height:"25px", width:"25px" }} className="svgInject" alt="" src="assets/imgs/theme/icons/mes-encheres.png" /> Mes enchères</Link>
                                         </li>
                                         <li className="mr-60">
-                                            <a><img style={{objectFit:"cover", objectPosition:"center", height:"25px", width:"25px" }} class="svgInject" alt="" src="assets/imgs/theme/icons/enchere.png" /> Enchères <i className="fi-rs-angle-down"></i></a>
+                                            <a><img style={{objectFit:"cover", objectPosition:"center", height:"25px", width:"25px" }} className="svgInject" alt="" src="assets/imgs/theme/icons/enchere.png" /> Enchères <i className="fi-rs-angle-down"></i></a>
                                             <ul className="sub-menu">
-                                                <li><a>En cours</a></li>
-                                                <li><a>Non-démarrées</a></li>
-                                                <li><a>Terminées </a></li>
+                                                <li><Link to="/encours">En cours</Link></li>
+                                                <li><Link to="/nondemarre">Non-démarrées</Link></li>
+                                                <li><Link to="/termine">Terminées </Link></li>
                                             </ul>
                                         </li>
                                         <li className="mr-60">
-                                            <a><img style={{objectFit:"cover", objectPosition:"center", height:"25px", width:"25px" }} class="svgInject" alt="" src="assets/imgs/theme/icons/icon-user.svg" /> Compte <i className="fi-rs-angle-down"></i></a>
+                                            <a><img style={{objectFit:"cover", objectPosition:"center", height:"25px", width:"25px" }} className="svgInject" alt="" src="assets/imgs/theme/icons/icon-user.svg" /> Compte <i className="fi-rs-angle-down"></i></a>
                                             <ul className="sub-menu">
                                                 <li>
-                                                    <a href="page-account.html"><i className="fi fi-rs-user mr-10"></i>Mon compte</a>
+                                                    <Link to="/login"><i className="fi fi-rs-user mr-10"></i>Mon compte</Link>
                                                 </li>
                                                 <li>
                                                     <a href="page-account.html"><i className="fi fi-rs-settings-sliders mr-10"></i>Paramètres</a>

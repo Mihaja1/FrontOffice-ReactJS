@@ -6,6 +6,7 @@ import { useNavigate, Link } from "react-router-dom";
 import ListCategorie from "../component/ListCategorie";
 import EnchereList from "../component/EnchereList";
 import LeftSideBar from "../component/LeftSideBar";
+import Status from "../component/Status";
 
 export default function MesEncheres() {
 
@@ -52,15 +53,15 @@ export default function MesEncheres() {
                                 
                                 <section className="product-tabs section-padding position-relative">
                                     <div className="section-title style-2">
-                                        <h3>Liste des enchères</h3>
+                                        <h3>Liste de mes enchères</h3>
                                         <ListCategorie></ListCategorie>
                                     </div>
                                     <div className="tab-content" id="myTabContent">
                                         <div className="tab-pane fade show active" id="tab-one" role="tabpanel" aria-labelledby="tab-one">
                                             <div className="row product-grid-4">
                                                 <p style={{color: "red"}}>{error}</p>
-                                            {enchere.map((e) => {
-                                                return(
+                                                {enchere?.map((e) => {
+                                                    return(
                                                         <div className="col-lg-1-5 col-md-4 col-12 col-sm-6">
                                                             <div className="product-cart-wrap mb-30">
                                                                 <div className="product-img-action-wrap">
@@ -71,23 +72,26 @@ export default function MesEncheres() {
                                                                         </a>
                                                                     </div>
                                                                     <div className="product-action-1">
-                                                                        <a aria-label="Voir détail" className="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i className="fi-rs-eye"></i></a>
+                                                                        <Link to={"/detailEnchere"} state={{ idEnchere : e.idEnchere}} aria-label="Voir détail"><i className="fi-rs-eye"></i></Link>
+                                                                    </div>
+                                                                    <div className="product-badges product-badges-position product-badges-mrg">
+                                                                        <Status status={e.statusEnchere}></Status>
                                                                     </div>
                                                                 </div>
                                                                 <div className="product-content-wrap">
                                                                     <div className="product-category">
                                                                         <a href="shop-grid-right.html">{e.categorie}</a>
                                                                     </div>
-                                                                    <h2><a href="shop-product-right.html">{e.nom}</a></h2>
-                                                                    <div className="product-rate-cover">
-                                                                        <span className="font-small ml-5 text-muted">Date: {e.dateEnchere} </span>
+                                                                    <h2><Link to={"/detailEnchere"} state={{ idEnchere : e.idEnchere}}>{e.nom}</Link></h2>
+                                                                    <div>
+                                                                        <span className="font-small text-muted">Par <a style={{color:"#0baf9a"}}>{e.nomVendeur} {e.prenomVendeur}</a></span>
                                                                     </div>
                                                                     <div>
-                                                                        <span className="font-small text-muted">By <a>{e.nomVendeur} {e.prenomVendeur}</a></span>
+                                                                        <span className="font-small text-muted"><a style={{color:"#253D4E"}}>{ (e.dateEnchere).replace("T", " à ") }</a></span>
                                                                     </div>
                                                                     <div className="product-card-bottom">
                                                                         <div className="product-price">
-                                                                            <span>{e.prixEnchere} Ar</span>
+                                                                            <span className="font-small ml-5" style={{color:"#0baf9a"}}>{e.prixEnchere} Ar</span>
                                                                         </div>
                                                                     </div>
                                                                 </div>

@@ -1,18 +1,19 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import EnchereList from "../component/EnchereList";
+import Footer from "../component/Footer";
+import Header from "../component/Header";
 import LeftSideBar from "../component/LeftSideBar";
 import ListCategorie from "../component/ListCategorie";
-import { useState, useEffect } from "react";
-import EnchereList from "../component/EnchereList";
-import Header from "../component/Header";
-import Footer from "../component/Footer";
 
-const Accueil = () => {
+const ResultSearch = () => {
 
     const [encheres, setEncheres] = useState([]);
-
     useEffect(()=>{
-        fetch('http://localhost:8080/v_enchere/listeEncheres',{
-            method : 'GET',
+        fetch('http://localhost:8080/encheres/recherches',{
+            method : 'POST',
+            body : JSON.stringify(JSON.parse(localStorage.getItem('conditions'))),
             headers : {'Content-Type' : 'application/json'},
         })
         .then(response => response.json())
@@ -24,7 +25,7 @@ const Accueil = () => {
             }
         );
     }, []);
-    
+
     return(
         <>
         <Header></Header>
@@ -35,7 +36,7 @@ const Accueil = () => {
                         
                         <section className="product-tabs section-padding position-relative">
                             <div className="section-title style-2">
-                                <h3>Liste des enchères</h3>
+                                <h3>Résultat de votre recherche</h3>
                                 <ListCategorie></ListCategorie>
                             </div>
                             <div className="tab-content" id="myTabContent">
@@ -47,7 +48,6 @@ const Accueil = () => {
                             </div>
                         </section>
                     </div>
-
                     <LeftSideBar></LeftSideBar>
                 </div>
             </div>
@@ -56,4 +56,4 @@ const Accueil = () => {
         </>
     )
 };
-export default Accueil;
+export default ResultSearch;
