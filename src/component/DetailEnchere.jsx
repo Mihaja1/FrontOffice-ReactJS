@@ -42,7 +42,7 @@ const DetailEnchere = () => {
             idEnchere : enchere?.idEnchere,
             prixOffre : offre
         }
-        fetch('http://localhost:8080/offres/rencherir/'+tokenValues,{
+        fetch('https://ws-deploiement-enchere-production.up.railway.app/rencherir/'+tokenValues,{
             method : 'POST',
             body : JSON.stringify(offres),
             headers : {'Content-Type' : 'application/json'},
