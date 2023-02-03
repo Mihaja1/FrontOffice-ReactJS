@@ -10,7 +10,7 @@ const EnchereList = ({encheres}) => {
                         <div className="product-cart-wrap mb-30">
                             <div className="product-img-action-wrap">
                                 <div className="product-img product-img-zoom">
-                                    <a href="shop-product-right.html">
+                                    <a>
                                         <img className="default-img" src={`data:image/${enchere?.oneImage?.format};base64,${enchere?.oneImage?.nomImage}`} alt="" />
                                     </a>
                                 </div>
@@ -23,7 +23,7 @@ const EnchereList = ({encheres}) => {
                             </div>
                             <div className="product-content-wrap">
                                 <div className="product-category">
-                                    <a href="shop-grid-right.html">{enchere.categorie}</a>
+                                    <a>{enchere.categorie}</a>
                                 </div>
                                 <h2><Link to={"/detailEnchere"} state={{ idEnchere : enchere.idEnchere}}>{enchere.nom}</Link></h2>
                                 <div>

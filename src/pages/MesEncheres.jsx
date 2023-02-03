@@ -66,7 +66,7 @@ export default function MesEncheres() {
                                                             <div className="product-cart-wrap mb-30">
                                                                 <div className="product-img-action-wrap">
                                                                     <div className="product-img product-img-zoom">
-                                                                        <a href="shop-product-right.html">
+                                                                        <a>
                                                                             <img className="default-img" src={`data:image/${e?.oneImage?.format};base64,${e?.oneImage?.nomImage}`} alt="" />
                                                                         </a>
                                                                     </div>
@@ -79,7 +79,7 @@ export default function MesEncheres() {
                                                                 </div>
                                                                 <div className="product-content-wrap">
                                                                     <div className="product-category">
-                                                                        <a href="shop-grid-right.html">{e.categorie}</a>
+                                                                        <a>{e.categorie}</a>
                                                                     </div>
                                                                     <h2><Link to={"/detailEnchere"} state={{ idEnchere : e.idEnchere}}>{e.nom}</Link></h2>
                                                                     <div>
