@@ -7,8 +7,8 @@ import Footer from "./Footer";
 const DetailEnchere = () => {
 
     const [enchere, setEnchere] = useState();
-    const [images, setImages] = useState([]);
     const [historiques, setHistoriques] = useState([]);
+    const [gagnant, setGagnant] = useState();
 
     const location = useLocation();
 
@@ -25,8 +25,8 @@ const DetailEnchere = () => {
                 var error = data.error;
                 if( error == null ){
                     setEnchere(data["enchere"]);
-                    setImages(data["images"]);
                     setHistoriques(data["historiques"]);
+                    setGagnant(data["gagnant"]);
                     console.log(JSON.stringify(data["historiques"]));
                 }
             }
@@ -75,36 +75,18 @@ const DetailEnchere = () => {
                                                     <div className="detail-gallery">
                                                         <div className="product-image-slider">
                                                             <figure className="border-radius-10">
-                                                                <img src="assets/imgs/shop/product-16-2.jpg" alt="product image" />
+                                                                <img src={`data:image/${enchere?.oneImage?.format};base64,${enchere?.oneImage?.nomImage}`} alt="" />
                                                             </figure>
-                                                            {/* <figure className="border-radius-10">
-                                                                <img src="assets/imgs/shop/product-16-1.jpg" alt="product image" />
-                                                            </figure>
-                                                            <figure className="border-radius-10">
-                                                                <img src="assets/imgs/shop/product-16-3.jpg" alt="product image" />
-                                                            </figure>
-                                                            <figure className="border-radius-10">
-                                                                <img src="assets/imgs/shop/product-16-4.jpg" alt="product image" />
-                                                            </figure>
-                                                            <figure className="border-radius-10">
-                                                                <img src="assets/imgs/shop/product-16-5.jpg" alt="product image" />
-                                                            </figure>
-                                                            <figure className="border-radius-10">
-                                                                <img src="assets/imgs/shop/product-16-6.jpg" alt="product image" />
-                                                            </figure>
-                                                            <figure className="border-radius-10">
-                                                                <img src="assets/imgs/shop/product-16-7.jpg" alt="product image" />
-                                                            </figure> */}
                                                         </div>
-                                                        {/* <div className="slider-nav-thumbnails">
-                                                            <div><img src="assets/imgs/shop/thumbnail-3.jpg" alt="product image" /></div>
-                                                            <div><img src="assets/imgs/shop/thumbnail-4.jpg" alt="product image" /></div>
-                                                            <div><img src="assets/imgs/shop/thumbnail-5.jpg" alt="product image" /></div>
-                                                            <div><img src="assets/imgs/shop/thumbnail-6.jpg" alt="product image" /></div>
-                                                            <div><img src="assets/imgs/shop/thumbnail-7.jpg" alt="product image" /></div>
-                                                            <div><img src="assets/imgs/shop/thumbnail-8.jpg" alt="product image" /></div>
-                                                            <div><img src="assets/imgs/shop/thumbnail-9.jpg" alt="product image" /></div>
-                                                        </div> */}
+                                                        <div className="row">
+                                                            {enchere?.images?.map((imgs) => {
+                                                                return(
+                                                                    <div className="col-3">
+                                                                        <img src={`data:image/${imgs?.format};base64,${imgs?.nomImage}`} alt="" />
+                                                                    </div>
+                                                                );
+                                                            })}
+                                                        </div> 
                                                     </div>
                                                 </div>
                                                 <div className="col-md-6 col-sm-12 col-xs-12">
@@ -135,39 +117,58 @@ const DetailEnchere = () => {
                                                             </div>
                                                         </div>
                                                         <div>
-                                                            {error?.code} {error?.message}
+                                                            <h4 style={{color:"red"}}>{error?.code} {error?.message}</h4>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="product-info">
-                                                <div className="tab-style3">
-                                                    <ul className="nav nav-tabs text-uppercase">
-                                                        <li className="nav-item">
-                                                            <a className="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Offres</a>
+                                            <div class="product-info">
+                                                <div class="tab-style3">
+                                                    <ul class="nav nav-tabs text-uppercase">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Offres</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab" href="#Additional-info">Gagnant</a>
                                                         </li>
                                                     </ul>
-                                                    <div className="tab-content shop_info_tab entry-main-content">
-                                                        <div className="tab-pane fade show active" id="Description">
+                                                    <div class="tab-content shop_info_tab entry-main-content">
+                                                        <div class="tab-pane fade show active" id="Description">
+                                                            <table class="font-md">
+                                                                <tbody>
+                                                                    <tr class="stand-up">
+                                                                        <th>Utilisateur</th>
+                                                                        <th>Date</th>
+                                                                        <th>Prix (Ar)</th>
+                                                                    </tr>
+                                                                    {historiques?.map((h) => ( 
+                                                                        <tr class="folded-wo-wheels">
+                                                                            <td>{h?.utilisateur?.nom} {h?.utilisateur?.prenom}</td>
+                                                                            <td>{h?.dateOffre?.replace("T", " à ")}</td>
+                                                                            <td>{h?.prixOffre}</td>
+                                                                        </tr>
+                                                                    ))}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <div class="tab-pane fade" id="Additional-info">
                                                             <div className="comment-list m-auto">
-                                                                {historiques?.map((h) => ( 
-                                                                    <div className="single-comment justify-content-between d-flex">
-                                                                        <div className="user justify-content-between d-flex">
-                                                                            <div className="desc">
-                                                                                <a className="font-heading text-brand">{h?.utilisateur?.nom} {h?.utilisateur?.prenom}</a>
-                                                                                <div className="d-flex justify-content-between">
-                                                                                    <div className="d-flex align-items-center">
-                                                                                        <span className="font-xs text-muted">{h?.dateOffre?.replace("T", " à ")} </span>
-                                                                                    </div>
-                                                                                </div><div className="d-flex justify-content-between mb-50">
-                                                                                    <div className="d-flex align-items-center">
-                                                                                        <span className="font-xs text-muted">{h?.prixOffre} Ar</span>
-                                                                                    </div>
+                                                                <div className="single-comment justify-content-between d-flex">
+                                                                    <div className="user justify-content-between d-flex">
+                                                                        <div className="desc">
+                                                                            <a className="font-heading text-brand">{gagnant?.nom} {gagnant?.prenom}</a>
+                                                                            <div className="d-flex justify-content-between">
+                                                                                <div className="d-flex align-items-center">
+                                                                                    <span className="font-xs text-muted">{gagnant?.dateOffre?.replace("T", " à ")} </span>
+                                                                                </div>
+                                                                            </div><div className="d-flex justify-content-between mb-50">
+                                                                                <div className="d-flex align-items-center">
+                                                                                    <span className="font-xs text-muted">{gagnant?.prixOffre}</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                ))}   
+                                                                </div>  
                                                             </div>
                                                         </div>
                                                     </div>

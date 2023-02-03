@@ -76,24 +76,21 @@ export default function Header() {
                     <div className="header-nav d-none d-lg-flex">
                         <div className="header-nav d-none d-lg-flex">
                             <div>
-                                <a href="#">
-                                    <img src="assets/imgs/theme/logo.svg" alt="logo" />
+                                <a>
+                                    <h1 style={{color:"#0baf9a"}}>MG-Enchere</h1>
                                 </a>
                             </div>
                             <div className="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading">
                                 <nav>
                                     <ul>
-                                        <li className="mr-60"></li>
-                                        <li className="mr-60">
+                                        <li className="mr-80"></li>
+                                        <li className="mr-80">
                                             <Link to="/"><img style={{objectFit:"cover", objectPosition:"center", height:"25px", width:"25px" }} className="svgInject" alt="" src="assets/imgs/theme/icons/home-page.png" /> Accueil</Link>
                                         </li>
-                                        <li className="mr-60">
-                                            <a href="index.html"><img style={{objectFit:"cover", objectPosition:"center", height:"25px", width:"25px" }} className="svgInject" alt="" src="assets/imgs/theme/icons/about-us.png" /> A propos</a>
-                                        </li>
-                                        <li className="mr-60">
+                                        <li className="mr-80">
                                             <Link to="/liste"><img style={{objectFit:"cover", objectPosition:"center", height:"25px", width:"25px" }} className="svgInject" alt="" src="assets/imgs/theme/icons/mes-encheres.png" /> Mes enchères</Link>
                                         </li>
-                                        <li className="mr-60">
+                                        <li className="mr-80">
                                             <a><img style={{objectFit:"cover", objectPosition:"center", height:"25px", width:"25px" }} className="svgInject" alt="" src="assets/imgs/theme/icons/enchere.png" /> Enchères <i className="fi-rs-angle-down"></i></a>
                                             <ul className="sub-menu">
                                                 <li><Link to="/encours">En cours</Link></li>
@@ -101,7 +98,7 @@ export default function Header() {
                                                 <li><Link to="/termine">Terminées </Link></li>
                                             </ul>
                                         </li>
-                                        <li className="mr-60">
+                                        <li className="mr-80">
                                             <a><img style={{objectFit:"cover", objectPosition:"center", height:"25px", width:"25px" }} className="svgInject" alt="" src="assets/imgs/theme/icons/icon-user.svg" /> Compte <i className="fi-rs-angle-down"></i></a>
                                             <ul className="sub-menu">
                                                 <li>

@@ -11,8 +11,7 @@ const EnchereList = ({encheres}) => {
                             <div className="product-img-action-wrap">
                                 <div className="product-img product-img-zoom">
                                     <a href="shop-product-right.html">
-                                        <img className="default-img" src="assets/imgs/shop/product-1-1.jpg" alt="" />
-                                        <img className="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt="" />
+                                        <img className="default-img" src={`data:image/${enchere?.oneImage?.format};base64,${enchere?.oneImage?.nomImage}`} alt="" />
                                     </a>
                                 </div>
                                 <div className="product-action-1">
@@ -31,7 +30,12 @@ const EnchereList = ({encheres}) => {
                                     <span className="font-small text-muted">Par <a style={{color:"#0baf9a"}}>{enchere.nomVendeur} {enchere.prenomVendeur}</a></span>
                                 </div>
                                 <div>
-                                    <span className="font-small text-muted"><a style={{color:"#253D4E"}}>{ (enchere.dateEnchere).replace("T", " à ") }</a></span>
+                                    
+                                    <span className="font-small text-muted">
+                                        <a style={{color:"#253D4E"}}>
+                                            { (enchere.dateEnchere).replace("T", " à ") }
+                                        </a>
+                                    </span>
                                 </div>
                                 <div className="product-card-bottom">
                                     <div className="product-price">
@@ -42,6 +46,7 @@ const EnchereList = ({encheres}) => {
                         </div>
                     </div>
                 );
+            
             })}
         </>
     )

@@ -20,6 +20,7 @@ const Accueil = () => {
                 var error = data.error;
                 if( error == null ){
                     setEncheres(data["data"]);
+                    console.log("Heeeee "+JSON.stringify(data["data"]));
                 }
             }
         );

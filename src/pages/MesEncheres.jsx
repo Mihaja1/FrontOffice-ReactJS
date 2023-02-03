@@ -67,8 +67,7 @@ export default function MesEncheres() {
                                                                 <div className="product-img-action-wrap">
                                                                     <div className="product-img product-img-zoom">
                                                                         <a href="shop-product-right.html">
-                                                                            <img className="default-img" src="assets/imgs/shop/product-1-1.jpg" alt="" />
-                                                                            <img className="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt="" />
+                                                                            <img className="default-img" src={`data:image/${enchere?.oneImage?.format};base64,${enchere?.oneImage?.nomImage}`} alt="" />
                                                                         </a>
                                                                     </div>
                                                                     <div className="product-action-1">
