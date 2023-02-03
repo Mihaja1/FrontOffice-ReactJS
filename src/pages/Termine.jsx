@@ -11,7 +11,7 @@ const Termine = () => {
     const [encheres, setEncheres] = useState([]);
 
     useEffect(()=>{
-        fetch('http://localhost:8080/v_enchere/listeEncheresTermine',{
+        fetch('https://ws-deploiement-enchere-production.up.railway.app/v_enchere/listeEncheresTermine',{
             method : 'GET',
             headers : {'Content-Type' : 'application/json'},
         })

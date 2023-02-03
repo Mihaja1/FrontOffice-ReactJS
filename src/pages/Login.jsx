@@ -20,7 +20,7 @@ export default function Login(){
             "motDePasse": mdp
         }
 
-        fetch('http://localhost:8080/utilisateur/loginUser',{
+        fetch('https://ws-deploiement-enchere-production.up.railway.app/utilisateur/loginUser',{
             method : 'POST',
             body : JSON.stringify(utilisateur),
             headers : {'Content-Type' : 'application/json'},

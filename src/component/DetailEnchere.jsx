@@ -16,7 +16,7 @@ const DetailEnchere = () => {
 
     useEffect(()=>{
         console.log("Eto "+idenchere);
-        fetch('http://localhost:8080/encheres/'+idenchere,{
+        fetch('https://ws-deploiement-enchere-production.up.railway.app/encheres/'+idenchere,{
             method : 'GET',
             headers : {'Content-Type' : 'application/json'},
         })

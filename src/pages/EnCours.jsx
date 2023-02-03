@@ -11,7 +11,7 @@ const EnCours = () => {
     const [encheres, setEncheres] = useState([]);
 
     useEffect(()=>{
-        fetch('http://localhost:8080/v_enchere/listeEncheresEnCours',{
+        fetch('https://ws-deploiement-enchere-production.up.railway.app/v_enchere/listeEncheresEnCours',{
             method : 'GET',
             headers : {'Content-Type' : 'application/json'},
         })

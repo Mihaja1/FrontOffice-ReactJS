@@ -11,7 +11,7 @@ const LeftSideBar = () => {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        fetch('http://localhost:8080/categorie/liste',{
+        fetch('https://ws-deploiement-enchere-production.up.railway.app/categorie/liste',{
             method : 'GET',
             headers : {'Content-Type' : 'application/json'},
         })

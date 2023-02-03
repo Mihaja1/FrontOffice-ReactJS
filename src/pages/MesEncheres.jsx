@@ -21,7 +21,7 @@ export default function MesEncheres() {
         if(token == null) {
             navigate("/login");
         } else {
-            fetch('http://localhost:8080/encheres/listeEnchere/'+token,{
+            fetch('https://ws-deploiement-enchere-production.up.railway.app/encheres/listeEnchere/'+token,{
                 method : 'GET',
                 headers : {'Content-Type' : 'application/json'},
             })

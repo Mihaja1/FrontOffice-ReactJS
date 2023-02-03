@@ -9,7 +9,7 @@ export default function Header() {
     function deconnect(e) {
         e.preventDefault();
 
-        fetch('http://localhost:8080/utilisateur/'+token,{
+        fetch('https://ws-deploiement-enchere-production.up.railway.app/utilisateur/'+token,{
             method : 'GET',
             headers : {'Content-Type' : 'application/json'},
         })

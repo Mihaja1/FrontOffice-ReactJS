@@ -11,7 +11,7 @@ const ResultSearch = () => {
 
     const [encheres, setEncheres] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:8080/encheres/recherches',{
+        fetch('https://ws-deploiement-enchere-production.up.railway.app/encheres/recherches',{
             method : 'POST',
             body : JSON.stringify(JSON.parse(localStorage.getItem('conditions'))),
             headers : {'Content-Type' : 'application/json'},

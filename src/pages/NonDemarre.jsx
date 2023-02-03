@@ -11,7 +11,7 @@ const NonDemarre = () => {
     const [encheres, setEncheres] = useState([]);
 
     useEffect(()=>{
-        fetch('http://localhost:8080/v_enchere/listeEncheresNonDemarre',{
+        fetch('https://ws-deploiement-enchere-production.up.railway.app/v_enchere/listeEncheresNonDemarre',{
             method : 'GET',
             headers : {'Content-Type' : 'application/json'},
         })

@@ -16,7 +16,7 @@ export default function Historique() {
     console.log("Eto "+idEnchere);
 
     useEffect(()=>{
-        fetch('http://localhost:8080/encheres/historiques/'+idEnchere+'/'+token,{
+        fetch('https://ws-deploiement-enchere-production.up.railway.app/encheres/historiques/'+idEnchere+'/'+token,{
             method : 'GET',
             headers : {'Content-Type' : 'application/json'},
         })
